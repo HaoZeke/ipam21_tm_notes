@@ -1,0 +1,38 @@
+* About
+Notes and snippets related to the IPAM 2021 long program on Tensor Methods and Emerging Applications to the Physical and Data Sciences.
+
+This collection of notes and code snippets are meant to be an easily accessible record for my participation. Might also be helpful for writing a white-paper.
+** Structure
+The entire site is generated ~jupyter-book~ as the least effort method to solicit contributions.
+** Running
+We can use ~micromamba~ ([[https://mamba.readthedocs.io/en/latest/micromamba.html][installation details]]) to set up:
+#+begin_src bash
+# Linux
+wget -qO- https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+# OS X
+curl -Ls https://micro.mamba.pm/api/micromamba/osx-64/latest | tar -xvj bin/micromamba
+# Windows instructions online
+mv bin/micromamba ~/.local/bin/micromamba
+#+end_src
+Now within the current ~git~ repository:
+#+begin_src bash
+eval "$(~/.local/bin/micromamba shell hook -s posix)"
+micromamba activate
+# Inside the project directory
+micromamba create -p ./tmp -f env.yml
+micromamba activate ./tmp
+#+end_src
+Finally, get a local server up and running:
+#+begin_src bash
+jb tensor_methods
+#+end_src
+Optionally, reload the build using a file-watching utility (I use [[https://github.com/rbenv/rbenv#installation][rbenv]]).
+#+begin_src bash
+eval "$(rbenv init -)"
+rbenv shell 3.0.1
+gem install filewatcher # Needs ruby
+filewatcher '**/*.{ipynb,md}' 'jb build tensor_methods'
+#+end_src
+* License
+- MIT license for the code
+- CC-BY-NC 4.0 for the content
