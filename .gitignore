@@ -171,4 +171,5 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-
+# Jupyter Book
+_build
