@@ -1,0 +1,36 @@
+name: deploy
+
+on:
+  # Trigger the workflow on push to main branch
+  push:
+    branches:
+      - main
+
+# This job installs dependencies, build the book, and pushes it to `gh-pages`
+jobs:
+  build-and-deploy-book:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v2
+
+    # Install dependencies
+    - name: install mamba
+      uses: mamba-org/provision-with-micromamba@main
+      environment-file: env.yml
+
+    # Build the book
+    - name: Build the book
+      shell: bash -l {0}
+      run: |
+        jupyter-book build tensor_methods
+
+    # Deploy the book's HTML to gh-pages branch
+    - name: GitHub Pages action
+      uses: peaceiris/actions-gh-pages@v3.6.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: tensor_methods/_build/html
