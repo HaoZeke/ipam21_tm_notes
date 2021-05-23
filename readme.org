@@ -1,10 +1,10 @@
 * About
-Notes and snippets related to the IPAM 2021 long program on Tensor Methods and Emerging Applications to the Physical and Data Sciences.
+Notes and snippets related to the [[http://www.ipam.ucla.edu/programs/long-programs/tensor-methods-and-emerging-applications-to-the-physical-and-data-sciences/][IPAM 2021 long program on Tensor Methods and Emerging Applications to the Physical and Data Sciences]].
 
-This collection of notes and code snippets are meant to be an easily accessible record for my participation. Might also be helpful for writing a white-paper.
+This collection of notes and code snippets are meant to be an easily accessible record for [[http://www.ipam.ucla.edu/programs/long-programs/tensor-methods-and-emerging-applications-to-the-physical-and-data-sciences/?tab=participant-list][my participation]].
 ** Structure
 The entire site is generated ~jupyter-book~ as the least effort method to solicit contributions.
-** Running
+** Running Locally
 We can use ~micromamba~ ([[https://mamba.readthedocs.io/en/latest/micromamba.html][installation details]]) to set up:
 #+begin_src bash
 # Linux
@@ -38,7 +38,7 @@ filewatcher '**/*.{ipynb,md}' 'jb build tensor_methods'
 *** References
 If you, like me, use ~biblatex~, then put the references into ~references.bib~ and use ~biber~ to convert to ~bibtex~ as follows:
 #+begin_src bash
-biber tensor_methods/references.bib --configfile=biberConf.xml --output-format=bibtex --output-file tensor_methods/refs.bib --tool
+biber --tool --configfile=biberConf.xml tensor_methods/references.bib --output-file refsTmp.bib --output-legacy-date --output-field-replace=location:address,journaltitle:journal
 #+end_src
 *** Images
 While adding images, please add both ~svg~ and ~png~ where possible, however if only one is available, use a ~png~ since ~svg~ images are not automatically embedded in the ~pdf~ output.

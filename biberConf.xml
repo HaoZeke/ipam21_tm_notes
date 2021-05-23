@@ -1,65 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Got the date from https://tex.stackexchange.com/a/299338/130845 -->
+<!-- Got the date from https://gist.githubusercontent.com/mkouhia/f00fea7fc8d4effd9dfd/raw/500e9dbc6aa43a47e39c45ba230738ff4544709f/biblatex-to-bibtex.conf -->
 <config>
   <output_fieldcase>lower</output_fieldcase>
   <output_resolve>1</output_resolve>
   <output_safechars>1</output_safechars>
+  <output_format>bibtex</output_format>
   <sourcemap>
-    <maps datatype="bibtex" map_overwrite="1">
-      <map map_overwrite="1">
-        <map_step map_field_source="date"
-        map_match="[0-9]{4}?-([0-9]{2}?)" map_final="1" />
-        <map_step map_field_set="month" map_field_value="$1" />
-      </map>
-      <map map_overwrite="1">
-        <map_step map_field_source="date" map_match="([0-9]{4}?)"
-        map_final="1" />
-        <map_step map_field_set="year" map_field_value="$1" />
-      </map>
-    </maps>
     <maps datatype="bibtex">
+      <!-- Easy type conversions -->
       <map>
-        <map_step map_type_source="inproceedings"
-        map_type_target="conference" />
-        <map_step map_type_source="online"
-        map_type_target="misc" />
-        <!-- Modified -->
-        <!-- <map_step map_type_source="online" map_type_target="www" /> -->
+        <map_step map_type_source="report" map_type_target="techreport"/>
+        <map_step map_type_source="online" map_type_target="misc"/>
+      </map>
+      <!-- Date to year, month -->
+      <map>
+        <map_step map_field_source="date"
+        map_field_target="year" />
       </map>
       <map>
-        <map_step map_type_source="mastersthesis"
-        map_type_target="thesis" map_final="1" />
-        <map_step map_field_set="type"
-        map_field_value="mathesis" />
+        <map_step map_field_source="year"
+        map_match="(\d{4}|\d{2})-(\d{1,2})-(\d{1,2})"
+        map_final="1" />
+        <map_step map_field_source="year"
+        map_match="(\d{4}|\d{2})-(\d{1,2})-(\d{1,2})"
+        map_replace="$1" />
+        <map_step map_field_set="month" map_origfieldval="1" />
+        <map_step map_field_source="month"
+        map_match="(\d{4}|\d{2})-(\d{1,2})-(\d{1,2})"
+        map_replace="$2" />
       </map>
       <map>
-        <map_step map_type_source="phdthesis"
-        map_type_target="thesis" map_final="1" />
-        <map_step map_field_set="type"
-        map_field_value="phdthesis" />
-      </map>
-      <map>
-        <map_step map_type_source="techreport"
-        map_type_target="report" map_final="1" />
-        <map_step map_field_set="type"
-        map_field_value="techreport" />
-      </map>
-      <map>
-        <map_step map_field_source="location"
-        map_field_target="address" />
-        <map_step map_field_source="institution"
-        map_field_target="school" />
-        <map_step map_field_source="annotation"
-        map_field_target="annote" />
-        <map_step map_field_source="eprinttype"
-        map_field_target="archiveprefix" />
-        <map_step map_field_source="journaltitle"
-        map_field_target="journal" />
-        <map_step map_field_source="eprintclass"
-        map_field_target="primaryclass" />
-        <map_step map_field_source="sortkey"
-        map_field_target="key" />
-        <map_step map_field_source="file" map_field_target="pdf" />
+        <map_step map_field_source="year"
+        map_match="(\d{4}|\d{2})-(\d{1,2})" map_final="1" />
+        <map_step map_field_source="year"
+        map_match="(\d{4}|\d{2})-(\d{1,2})" map_replace="$1" />
+        <map_step map_field_set="month" map_origfieldval="1" />
+        <map_step map_field_source="month"
+        map_match="(\d{4}|\d{2})-(\d{1,2})" map_replace="$2" />
       </map>
     </maps>
   </sourcemap>
