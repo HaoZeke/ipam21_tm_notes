@@ -21,6 +21,8 @@ micromamba activate
 # Inside the project directory
 micromamba create -p ./tmp -f env.yml
 micromamba activate ./tmp
+# Install the kernel
+python -m ipykernel install --name ipam-tensors
 #+end_src
 Finally, get a local server up and running:
 #+begin_src bash
