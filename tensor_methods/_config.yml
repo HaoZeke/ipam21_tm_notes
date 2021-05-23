@@ -25,6 +25,7 @@ latex:
   latex_engine: xelatex
   latex_documents:
      targetname: ipamNotes.tex
-# sphinx:
-#   config:
-#     latex_toplevel_sectioning: 'part'
+sphinx:
+ config:
+   language: en
+   latex_toplevel_sectioning: 'part'
