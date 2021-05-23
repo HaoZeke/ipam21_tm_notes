@@ -1,0 +1,22 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+- file: intro
+
+# - part: Tutorials
+#   chapters:
+#     - file: tutorials/d1s1_lowranktensors
+#     - file: tutorials/d1s2_linear2multilin
+
+- part: Workshop 1
+  chapters:
+    - file: wsOne/intro.md
+      sections:
+        - file: wsOne/lec/intro.md
+          sections:
+            - file: wsOne/lec/d1s3_lars.md
+        - file: wsOne/code/intro.md
+
+# - part: Tensor Network States and Applications (W2)
+#   chapters:
+#     - file: wsTwo/d1s1_lingwang
