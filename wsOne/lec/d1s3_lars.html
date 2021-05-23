@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multigrid in Hierarchical Low Rank Tensor Formats &#8212; IPAM Tensor Method Notes 2021</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Code" href="../code/intro.html" />
+    <link rel="prev" title="Lectures" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IPAM Tensor Method Notes 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Tensor Methods and Emerging Applications to the Physical and Data Sciences
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Workshop 1
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../intro.html">
+   Tensor Methods and their Applications in the Physical and Data Sciences
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="intro.html">
+     Lectures
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Multigrid in Hierarchical Low Rank Tensor Formats
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../code/intro.html">
+     Code
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/wsOne/lec/d1s3_lars.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#main-results">
+     Main results
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#open-questions">
+     Open Questions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="multigrid-in-hierarchical-low-rank-tensor-formats">
+<h1>Multigrid in Hierarchical Low Rank Tensor Formats<a class="headerlink" href="#multigrid-in-hierarchical-low-rank-tensor-formats" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>By <a class="reference external" href="https://www.igpm.rwth-aachen.de/grasedyck">Lars Grasedyck</a></p></li>
+<li><p>RWTH Aachen University</p></li>
+<li><p><a class="reference external" href="http://www.ipam.ucla.edu/abstract/?tid=16626&amp;pcode=TMWS1">Video here</a></p></li>
+</ul>
+<blockquote>
+<div><p>In this presentation we give a brief introduction to hierarchial low rank tensor formats for the representation of high-dimensional tensors that fulfil certain rank bounds or singular value decay of corresponding matricizations.</p>
+</div></blockquote>
+<blockquote>
+<div><p>In order to solve systems of equations in these formats there are already many developed and practically useful methods available. However, their convergence and convergence rates are difficult to analyse. On the other hand multigrid methods are well analysed with superior convergence rates. We use the classical multigrid convergence theory by providing a smoother and prolongations / restrictions that comply with low rank tensor formats. Prolongation and restriction are naturally given in a low rank tensor formulation. The smoother is an approximation of Jacobi based on a truncated exponential sum, thereby adapting it to the low rank format.</p>
+</div></blockquote>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are essentially a rough sketch of the slides.</p>
+</div>
+<p>For model (and complex) problems the main goal is the ability to have a <strong>convergence guarantee</strong>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand ugly scribbled transcript</p>
+<p><img alt="Slide1" src="../../_images/wks1p_1.svg" />
+<img alt="Slide2" src="../../_images/wks1p_2.svg" />
+<img alt="Slide3" src="../../_images/wks1p_3.svg" />
+<img alt="Slide4" src="../../_images/wks1p_4.svg" />
+<img alt="Slide5" src="../../_images/wks1p_5.svg" />
+<img alt="Slide6" src="../../_images/wks1p_6.svg" />
+<img alt="Slide7" src="../../_images/wks1p_7.svg" /></p>
+</div>
+<div class="section" id="main-results">
+<h3>Main results<a class="headerlink" href="#main-results" title="Permalink to this headline">¶</a></h3>
+<p>Detailed in <span id="id1">[<a class="reference internal" href="#id4"><span>GKLobbertW20</span></a>]</span> along with some earlier related results <span id="id2">[<a class="reference internal" href="#id5"><span>GLobbert18</span></a>,<a class="reference internal" href="#id6"><span>Gra10</span></a>]</span></p>
+<ul class="simple">
+<li><p>HT-approximability for inverse of diagonal matrix</p></li>
+<li><p>Convergence proof (uniform) for multigrid (parameter <span class="math notranslate nohighlight">\(p\)</span>)</p></li>
+</ul>
+</div>
+<div class="section" id="open-questions">
+<h3>Open Questions<a class="headerlink" href="#open-questions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Other smoothers</p></li>
+<li><p>Algebraic Multigrid</p></li>
+<li><p>Matrix (parameter <span class="math notranslate nohighlight">\(p\)</span>) dependent prolongation / restriction</p></li>
+<li><p>Dimension <span class="math notranslate nohighlight">\((d)\)</span> reduction on coarse grids</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id2">Gra10</a></span></dt>
+<dd><p>Lars Grasedyck. Hierarchical Singular Value Decomposition of Tensors. <em>SIAM Journal on Matrix Analysis and Applications</em>, 31(4):2029–2054, 01 2010. URL: <a class="reference external" href="https://epubs.siam.org/doi/abs/10.1137/090764189">https://epubs.siam.org/doi/abs/10.1137/090764189</a> (visited on 2021-05-22), <a class="reference external" href="https://doi.org/10.1137/090764189">doi:10.1137/090764189</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">GKLobbertW20</a></span></dt>
+<dd><p>Lars Grasedyck, Maren Klever, Christian Löbbert, and Tim A. Werthmann. A parameter-dependent smoother for the multigrid method. 08 2020. URL: <a class="reference external" href="http://arxiv.org/abs/2008.00927">http://arxiv.org/abs/2008.00927</a> (visited on 2021-05-22), <a class="reference external" href="https://arxiv.org/abs/2008.00927">arXiv:2008.00927</a>.</p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">GLobbert18</a></span></dt>
+<dd><p>Lars Grasedyck and Christian Löbbert. Distributed hierarchical SVD in the Hierarchical Tucker format. <em>Numerical Linear Algebra with Applications</em>, 25(6):e2174, 2018. URL: <a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1002/nla.2174">https://onlinelibrary.wiley.com/doi/abs/10.1002/nla.2174</a> (visited on 2021-05-22), <a class="reference external" href="https://doi.org/10.1002/nla.2174">doi:10.1002/nla.2174</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./wsOne/lec"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Lectures</a>
+    <a class='right-next' id="next-link" href="../code/intro.html" title="next page">Code</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By IPAM participants<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <div>
+  Maintained by <a href="https://rgoswami.me">Rohit Goswami (HaoZeke)</a>
+  <br/>
+  <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+</div>
+
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
