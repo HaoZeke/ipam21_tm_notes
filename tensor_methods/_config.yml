@@ -25,6 +25,14 @@ latex:
   latex_engine: xelatex
   latex_documents:
      targetname: ipamNotes.tex
+repository:
+  url: https://github.com/HaoZeke/ipam21_tm_notes
+  path_to_book: tensor_methods
+  branch: main
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
 sphinx:
  config:
    language: en
