@@ -40,6 +40,8 @@ If you, like me, use ~biblatex~, then put the references into ~references.bib~ a
 #+begin_src bash
 biber tensor_methods/references.bib --configfile=biberConf.xml --output-format=bibtex --output-file tensor_methods/refs.bib --tool
 #+end_src
+*** Images
+While adding images, please add both ~svg~ and ~png~ where possible, however if only one is available, use a ~png~ since ~svg~ images are not automatically embedded in the ~pdf~ output.
 * License
 - MIT license for the code
 - CC-BY-NC 4.0 for the content
