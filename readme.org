@@ -35,6 +35,11 @@ rbenv shell 3.0.1
 gem install filewatcher # Needs ruby
 filewatcher '**/*.{ipynb,md}' 'jb build tensor_methods'
 #+end_src
+*** References
+If you, like me, use ~biblatex~, then put the references into ~references.bib~ and use ~biber~ to convert to ~bibtex~ as follows:
+#+begin_src bash
+biber tensor_methods/references.bib --configfile=biberConf.xml --output-format=bibtex --output-file tensor_methods/refs.bib --tool
+#+end_src
 * License
 - MIT license for the code
 - CC-BY-NC 4.0 for the content

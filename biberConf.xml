@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Got the date from https://tex.stackexchange.com/a/299338/130845 -->
+<config>
+  <output_fieldcase>lower</output_fieldcase>
+  <output_resolve>1</output_resolve>
+  <output_safechars>1</output_safechars>
+  <sourcemap>
+    <maps datatype="bibtex" map_overwrite="1">
+      <map map_overwrite="1">
+        <map_step map_field_source="date"
+        map_match="[0-9]{4}?-([0-9]{2}?)" map_final="1" />
+        <map_step map_field_set="month" map_field_value="$1" />
+      </map>
+      <map map_overwrite="1">
+        <map_step map_field_source="date" map_match="([0-9]{4}?)"
+        map_final="1" />
+        <map_step map_field_set="year" map_field_value="$1" />
+      </map>
+    </maps>
+    <maps datatype="bibtex">
+      <map>
+        <map_step map_type_source="inproceedings"
+        map_type_target="conference" />
+        <map_step map_type_source="online"
+        map_type_target="misc" />
+        <!-- Modified -->
+        <!-- <map_step map_type_source="online" map_type_target="www" /> -->
+      </map>
+      <map>
+        <map_step map_type_source="mastersthesis"
+        map_type_target="thesis" map_final="1" />
+        <map_step map_field_set="type"
+        map_field_value="mathesis" />
+      </map>
+      <map>
+        <map_step map_type_source="phdthesis"
+        map_type_target="thesis" map_final="1" />
+        <map_step map_field_set="type"
+        map_field_value="phdthesis" />
+      </map>
+      <map>
+        <map_step map_type_source="techreport"
+        map_type_target="report" map_final="1" />
+        <map_step map_field_set="type"
+        map_field_value="techreport" />
+      </map>
+      <map>
+        <map_step map_field_source="location"
+        map_field_target="address" />
+        <map_step map_field_source="institution"
+        map_field_target="school" />
+        <map_step map_field_source="annotation"
+        map_field_target="annote" />
+        <map_step map_field_source="eprinttype"
+        map_field_target="archiveprefix" />
+        <map_step map_field_source="journaltitle"
+        map_field_target="journal" />
+        <map_step map_field_source="eprintclass"
+        map_field_target="primaryclass" />
+        <map_step map_field_source="sortkey"
+        map_field_target="key" />
+        <map_step map_field_source="file" map_field_target="pdf" />
+      </map>
+    </maps>
+  </sourcemap>
+</config>
