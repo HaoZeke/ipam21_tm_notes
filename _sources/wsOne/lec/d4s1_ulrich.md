@@ -16,7 +16,7 @@ The main problem with the Hamiltonian is the electron electron interactions. Whe
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Slide1](d4s1/wks1_d4s1p_1.*)
+![Slide1](d4s1/wks1_d4s1_p1.*)
 ```
 
 Strong correlations matter, and their study in every dimension is important:
@@ -36,14 +36,14 @@ Essentially, the system is simplified in multiple stages.
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Slide2](d4s1/wks1_d4s1p_2.*)
+![Slide2](d4s1/wks1_d4s1_p2.*)
 ```
 
 - Some transitions have no order parameter, atleast, not a symmetry breaking simple order parameter.
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Slide3](d4s1/wks1_d4s1p_3.*)
+![Slide3](d4s1/wks1_d4s1_p3.*)
 ```
 
 For the Mott Hubbard transition there is no symmetry breaking, and the transition is due to energetic blocking
@@ -104,7 +104,7 @@ Good system for integrating MPS-DMFT with DFT band structure, since without SOC 
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Page4](d4s1/wks1_d4s1p_4.*)
+![Page4](d4s1/wks1_d4s1_p4.*)
 ```
 
 Key questions were:
@@ -124,7 +124,7 @@ The tensor related steps are the calculation of the ground state, excitation, an
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Page5](d4s1/wks1_d4s1p_5.*)
+![Page5](d4s1/wks1_d4s1_p5.*)
 ```
 
 ### Issues
@@ -133,7 +133,7 @@ However, the mapping of a bath to a 1D MPS is non-trivial and was disputed {cite
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Page6](d4s1/wks1_d4s1p_6.*)
+![Page6](d4s1/wks1_d4s1_p6.*)
 ```
 
 The star geometry is an order of magnitude more efficient.
@@ -145,8 +145,8 @@ In order to capture the behavior of the anticommutator, a higher resolution is n
 
 ```{admonition} Click to expand slide scribble
 :class: dropdown
-![Page7](d4s1/wks1_d4s1p_7.*)
-![Page8](d4s1/wks1_d4s1p_8.*)
+![Page7](d4s1/wks1_d4s1_p7.*)
+![Page8](d4s1/wks1_d4s1_p8.*)
 ```
 
 [time=23:16 for benchmarks]
