@@ -172,4 +172,5 @@ The off diagonals show agreement with ARPES, angular resolved photo electron spe
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 ```
