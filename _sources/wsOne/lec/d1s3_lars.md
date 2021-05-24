@@ -42,4 +42,5 @@ Detailed in {cite}`grasedyckParameterdependentSmootherMultigrid2020` along with 
 ## References
 
 ```{bibliography}
+:filter: docname in docnames
 ```
