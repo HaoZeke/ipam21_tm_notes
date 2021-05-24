@@ -28,7 +28,7 @@ Strong correlations matter, and their study in every dimension is important:
 
 Dynamical mean field theory is the main bridging method.
 
-```{info}
+```{tip}
 Main results are derived in {cite}`lindenImaginarytimeMatrixProduct2020` with applications described in {cite}`wolfImaginaryTimeMatrixProduct2015,brambergerBaOsOHundMetal2021,karpMathrmSrMathrmMoOMathrmSr2020`.
 ```
 
