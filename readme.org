@@ -38,7 +38,7 @@ filewatcher '**/*.{ipynb,md}' 'jb build tensor_methods'
 *** References
 If you, like me, use ~biblatex~, then put the references into ~references.bib~ and use ~biber~ to convert to ~bibtex~ as follows:
 #+begin_src bash
-biber --tool --configfile=biberConf.xml tensor_methods/references.bib --output-file refsTmp.bib --output-legacy-date --output-field-replace=location:address,journaltitle:journal
+biber --tool --configfile=biberConf.xml tensor_methods/refs/references.bib --output-file tensor_methods/refs/refs.bib --output-legacy-date --output-field-replace=location:address,journaltitle:journal
 #+end_src
 *** Images
 While adding images, please add both ~svg~ and ~png~ where possible, however if only one is available, use a ~png~ since ~svg~ images are not automatically embedded in the ~pdf~ output.
