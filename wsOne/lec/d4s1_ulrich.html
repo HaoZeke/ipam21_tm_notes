@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matrix product states for real materials &#8212; IPAM Tensor Method Notes 2021</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.c441f2ba0852f4cabcb80105e3a46ae6.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "HaoZeke/ipam21_tm_notes");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "💬 comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Code" href="../code/intro.html" />
+    <link rel="prev" title="Multigrid in Hierarchical Low Rank Tensor Formats" href="d1s3_lars.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">IPAM Tensor Method Notes 2021</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Tensor Methods and Emerging Applications to the Physical and Data Sciences
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Workshop 1
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="../intro.html">
+   Tensor Methods and their Applications in the Physical and Data Sciences
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2 current active collapsible-parent">
+    <a class="reference internal" href="intro.html">
+     Lectures
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l3">
+      <a class="reference internal" href="d1s3_lars.html">
+       Multigrid in Hierarchical Low Rank Tensor Formats
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Matrix product states for real materials
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../code/intro.html">
+     Code
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/wsOne/lec/d4s1_ulrich.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                    title="Fullscreen mode"><i
+                        class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#notes">
+   Notes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dmft">
+     DMFT
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mps-formulation">
+     MPS Formulation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#case-study">
+     Case study
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#issues">
+     Issues
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#time-scaling">
+     Time Scaling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#spin-orbit-coupling">
+     Spin Orbit coupling
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#conclusions">
+     Conclusions
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="matrix-product-states-for-real-materials">
+<h1>Matrix product states for real materials<a class="headerlink" href="#matrix-product-states-for-real-materials" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>By <a class="reference external" href="https://homepages.physik.uni-muenchen.de/~Schollwoeck/">Ulrich Schollwöck</a></p></li>
+<li><p>University of Munich</p></li>
+<li><p><a class="reference external" href="http://www.ipam.ucla.edu/abstract/?tid=16578&amp;pcode=TMWS1">Video here</a></p></li>
+</ul>
+<blockquote>
+<div><p>In this talk, I will present recent advances on how to combine MPS-based and similar algorithms to provide impurity solvers for dynamical mean-field theory (DMFT) in combination with density functional theory. Several physical applications, in particular to strongly correlated materials with Hund’s coupling and spin-orbit coupling (transition metal and rare earth oxides) will be presented, showing how this method can solve physical questions that are not easily accessible to competing methods.</p>
+</div></blockquote>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Images cannot be embeded as only a video was provided. Timestamps are indicated.</p>
+</div>
+<p>The main problem with the Hamiltonian is the electron electron interactions. Where the system cannot be framed in terms of a delocalized interaction (e.g. where the valence electrons are bound to sites) then the many body problem needs to be solved. This is the realm of strongly correlated systems where model Hamiltonians are used to study such interactions.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Slide1" src="wsOne/lec/d4s1/wks1_d4s1p_1.*" /></p>
+</div>
+<p>Strong correlations matter, and their study in every dimension is important:</p>
+<ul class="simple">
+<li><p><strong>0 dimensional</strong> systems related to magnetic systems, impurity physics, and quantum dots</p></li>
+<li><p><strong>1 dimensional</strong> systems model spin chains and ladders, along with the Luttinger liquid</p></li>
+<li><p><strong>2 dimensional</strong> systems are relevant for modeling frustrated magnets and high-T_C superconductors</p></li>
+<li><p><strong>3 dimensional</strong> models have the capacity to study realistic systems, and can describe transition metals and rare earth compounds</p>
+<ul>
+<li><p>Focus area for talk</p></li>
+</ul>
+</li>
+</ul>
+<p>Dynamical mean field theory is the main bridging method.</p>
+<p>Essentially, the system is simplified in multiple stages.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Slide2" src="wsOne/lec/d4s1/wks1_d4s1p_2.*" /></p>
+</div>
+<ul class="simple">
+<li><p>Some transitions have no order parameter, atleast, not a symmetry breaking simple order parameter.</p></li>
+</ul>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Slide3" src="wsOne/lec/d4s1/wks1_d4s1p_3.*" /></p>
+</div>
+<p>For the Mott Hubbard transition there is no symmetry breaking, and the transition is due to energetic blocking</p>
+<div class="section" id="dmft">
+<h3>DMFT<a class="headerlink" href="#dmft" title="Permalink to this headline">¶</a></h3>
+<p>The dynamical mean field theory aims to recreate the temporal dependence by certain key aspects:</p>
+<ul class="simple">
+<li><p>interacting model <span class="math notranslate nohighlight">\(\to\)</span> interacting impurity in a non-interacting effictive bath</p></li>
+<li><p>impurity <strong>dynamically</strong> exchanges electrons with bath</p></li>
+<li><p><strong>dynamical self-consistency</strong> implies that the local lattice GF/SE is the same as the impurity GF/SE</p></li>
+</ul>
+<p>This is exact in the limit of infinite coordination number or dimension.</p>
+<p>It can be made more realistic by virtue of:</p>
+<ul class="simple">
+<li><p>Having more bands</p></li>
+<li><p>Using cluster methods</p></li>
+<li><p>Combinations with DFT</p></li>
+</ul>
+<p>The method is originally described in <span id="id1">[<span>georgesHubbardModelInfinite1992</span>]</span> with more details in <span id="id2">[<span>kotliarElectronicStructureCalculations2006</span><span>georgesDynamicalMeanfieldTheory1996</span>]</span>.</p>
+<p>Green’s function is required. This is done with an impurity solver like:</p>
+<ul class="simple">
+<li><p>Hirsch-Fye MC (Action) [Obsolete]</p></li>
+<li><p>continuous time QMC (Action)</p>
+<ul>
+<li><p>analytic continuation</p></li>
+<li><p>sign problem?</p></li>
+</ul>
+</li>
+<li><p>exact diagnolization (Hamiltonian)</p>
+<ul>
+<li><p>analytic continuation</p></li>
+<li><p>computational cost (exponential)</p></li>
+</ul>
+</li>
+<li><p>numerical renormalization group (Hamiltonian)</p>
+<ul>
+<li><p>logarithmic discretization</p></li>
+<li><p>computational cost (exponential)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="mps-formulation">
+<h3>MPS Formulation<a class="headerlink" href="#mps-formulation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Good for 1D</p></li>
+<li><p>No sign issues (unlike CT-QMC)</p></li>
+<li><p>Real frequency axis</p></li>
+<li><p>No logarihmic discretization of the spectral range</p></li>
+<li><p>Computational tractable</p></li>
+<li><p>Works best at zero temperature (unlike CT-QMC)</p></li>
+</ul>
+<p>On the imaginary axis:</p>
+<ul class="simple">
+<li><p>smaller bath sizes</p></li>
+<li><p>no entanglement growth in time evolution</p></li>
+<li><p>more orbitals</p></li>
+<li><p>however, needs analytic continuation of spectral function</p></li>
+<li><p>worked upto 6 orbitals (in <span id="id3">[<span>wolfImaginaryTimeMatrixProduct2015</span>]</span>)</p></li>
+</ul>
+</div>
+<div class="section" id="case-study">
+<h3>Case study<a class="headerlink" href="#case-study" title="Permalink to this headline">¶</a></h3>
+<p>Properties of strontium ruthenate are described in <span id="id4">[<span>mackenzieSuperconductivityMathrmSrMathrmRuO2003</span>]</span>. Overview:</p>
+<ul class="simple">
+<li><p>2D, 3 relevant d-orbitals</p></li>
+<li><p>Strongly correlated</p></li>
+<li><p>Fermi liquid (Hund’s metal)</p></li>
+<li><p>Unocnventional superconductor (p-wave)</p></li>
+<li><p>Appreciable spin-orbit coupling (SOC)</p></li>
+</ul>
+<p>Good system for integrating MPS-DMFT with DFT band structure, since without SOC CTQMC-DMFT is very accurate and can be used for benchmarks, with SOC there is a sign problem.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Page4" src="wsOne/lec/d4s1/wks1_d4s1p_4.*" /></p>
+</div>
+<p>Key questions were:</p>
+<ul class="simple">
+<li><p>does SOC affect the Fermi liquid behaviour</p></li>
+<li><p>interplay of Coulomb interaction and SOC</p></li>
+<li><p>calculation of new topology</p></li>
+<li><p>CTQMC has a sign problem at low temp.</p></li>
+</ul>
+<p>Existing literature <span id="id5">[<span>tamaiHighResolutionPhotoemissionMathrmSr2019</span><span>zhangFermiSurfaceMathrmSr2016</span><span>kimSpinOrbitCouplingElectronic2018</span>]</span> suggested that Fermi liquid was a little affected with a strong SOC enhancement via a fitting process.</p>
+<p>Effective steps for imaginary time DMFT-MPS [time=18m10s]:</p>
+<ul class="simple">
+<li><p>From Green’s function and self energy</p></li>
+<li><p>Derive an effective Hamiltonian where the impurity is</p></li>
+<li><p>Time evolution and then feed into the SCF loop</p></li>
+</ul>
+<p>The tensor related steps are the calculation of the ground state, excitation, and then time evolution. Without spin orbit coupling there are no interactions and the calculation is fairly straightforward.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Page5" src="wsOne/lec/d4s1/wks1_d4s1p_5.*" /></p>
+</div>
+</div>
+<div class="section" id="issues">
+<h3>Issues<a class="headerlink" href="#issues" title="Permalink to this headline">¶</a></h3>
+<p>However, the mapping of a bath to a 1D MPS is non-trivial and was disputed <span id="id6">[<span>wolfSolvingNonequilibriumDynamical2014</span>]</span>.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Page6" src="wsOne/lec/d4s1/wks1_d4s1p_6.*" /></p>
+</div>
+<p>The star geometry is an order of magnitude more efficient.
+The star geometry has a growing potential, and the sites have a full/empty product state, and the impurity hopping causes some entanglement but is offset by the fact that the hoppings are energetically unfavorable. With the chain model, the potentials are constant, hopping is therefore cheap (intrabath) and effectively there is much more entanglement.</p>
+</div>
+<div class="section" id="time-scaling">
+<h3>Time Scaling<a class="headerlink" href="#time-scaling" title="Permalink to this headline">¶</a></h3>
+<p>In order to capture the behavior of the anticommutator, a higher resolution is needed for lower times.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Click to expand slide scribble</p>
+<p><img alt="Page7" src="wsOne/lec/d4s1/wks1_d4s1p_7.*" />
+<img alt="Page8" src="wsOne/lec/d4s1/wks1_d4s1p_8.*" /></p>
+</div>
+<p>[time=23:16 for benchmarks]</p>
+<p>Linear predictions for the time work as well, empirically <span id="id7">[<span>barthelSpectralFunctionsOnedimensional2009</span>]</span>.</p>
+<p>[time=24:00 for benchmarks]</p>
+</div>
+<div class="section" id="spin-orbit-coupling">
+<h3>Spin Orbit coupling<a class="headerlink" href="#spin-orbit-coupling" title="Permalink to this headline">¶</a></h3>
+<p>The bath fitting becomes much more difficult, due to interactions. From two self energies to 21 self energies. However, the diagonal self-energies are essentially unchanged, that is when the impurity jumps in and out of the bath, does not change the Fermi liquid behavior, as expected.</p>
+<p>The off diagonals show agreement with ARPES, angular resolved photo electron spectroscopy signals. This now allows for a fit free comparison for real systems.</p>
+<p>[time=25:00 for benchmarks]</p>
+</div>
+<div class="section" id="conclusions">
+<h3>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>MPS for realistic non-1D problems</p></li>
+<li><p>Advanced complementary time evolution</p></li>
+<li><p>Krylov+2TDVP (time stepper combinations)</p></li>
+<li><p>MPS-DMFT allows a first principles treatment of SOC, reproduces CTQMC, is cheaper</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./wsOne/lec"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="d1s3_lars.html" title="previous page">Multigrid in Hierarchical Low Rank Tensor Formats</a>
+    <a class='right-next' id="next-link" href="../code/intro.html" title="next page">Code</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By IPAM participants<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
