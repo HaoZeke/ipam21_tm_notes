@@ -9,15 +9,6 @@ title                       : IPAM Tensor Method Notes 2021  # The title of the 
 author                      : IPAM participants  # The author of the book
 copyright                   : "2021"  # Copyright year to be placed in the footer
 logo                        : logo.png  # A path to the book logo
-html:
-    extra_footer: |
-        <div>
-          Maintained by <a href="https://rgoswami.me">Rohit Goswami (HaoZeke)</a>
-          <br/>
-          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
-          <br/>
-          Powered by Netlify
-        </div>
 bibtex_bibfiles:
     - refs.bib
 only_build_toc_files: true
@@ -33,12 +24,19 @@ html:
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
-launch_buttons:
-  colab_url: "https://colab.research.google.com"
-html:
+  extra_footer: |
+        <div>
+          Maintained by <a href="https://rgoswami.me">Rohit Goswami (HaoZeke)</a>
+          <br/>
+          <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+          <br/>
+          Powered by Netlify
+        </div>
   comments:
     utterances:
       repo: "HaoZeke/ipam21_tm_notes"
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
 sphinx:
  config:
    language: en
