@@ -168,3 +168,8 @@ The off diagonals show agreement with ARPES, angular resolved photo electron spe
 - Advanced complementary time evolution
 - Krylov+2TDVP (time stepper combinations)
 - MPS-DMFT allows a first principles treatment of SOC, reproduces CTQMC, is cheaper
+
+## References
+
+```{bibliography}
+```
