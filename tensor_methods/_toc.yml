@@ -15,6 +15,7 @@
         - file: wsOne/lec/intro.md
           sections:
             - file: wsOne/lec/d1s3_lars.md
+            - file: wsOne/lec/d4s1_ulrich.md
         - file: wsOne/code/intro.md
 
 # - part: Tensor Network States and Applications (W2)
