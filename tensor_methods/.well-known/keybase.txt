@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/haozeke
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://ipam21.netlify.app
+  * I am haozeke (https://keybase.io/haozeke) on keybase.
+  * I have a public key with fingerprint 74B1 F67D 8E43 A94A 7554  0768 9CCC E364 02CB 49A6
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01208ed13a74c208e57451702e57550c266f31f877ea9d2786b13e00769e447447d00a",
+      "fingerprint": "74b1f67d8e43a94a755407689ccce36402cb49a6",
+      "host": "keybase.io",
+      "key_id": "9ccce36402cb49a6",
+      "kid": "0101947d2edecf341ec640852c7742ca75d68c479eb56f270b86dfd9621d39c2db840a",
+      "uid": "8ca27cf24cf6c9de4076b171e8004019",
+      "username": "haozeke"
+    },
+    "service": {
+      "hostname": "ipam21.netlify.app",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1623974608,
+  "expire_in": 157680000,
+  "prev": "3c960068ff48c128f223222a40e754241c258b6217c5994d3bda25261cb0e360",
+  "seqno": 109,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMN5AnicbZJ5TBRXHMd3KYUCotiDjbEEHSoiC2Tmzewcm9JaSEpK29A2dsGCrHO8
+gZFld9ldLg0kVqFaw1W02GKrgYoVObQ2JE1BA1mguFw12yjtBhTaYrD1KNRGy9E3
+RP/ryyTvzcv3+/l9f788d+hTmmDtieEZyc/zRovW0/tloWa3Z3p8HybYpFLMuA/L
+g6sbtEjQ6TLnKRJmxHAC4CyUCJJnKFE9GhjKQDA4QAeDARcBTcskIbMMA3lOAgxL
+CwQJcZyhOUhRDPokHOexOExWrDnQYXcoVhfCMpRAyDQjsZAieY7iEYtCHpYTRRGS
+NIUDUaA4nkbGXJtTdaBwAu+ECYoN3aEf82q8/9E/yY0THCoOoARFmaQIKCIVawAi
+w1BARAUlmhUphoOCgZYBgwssLckSRwNCIjkRSAJLreYuXMWxIg8YUQaUKNMiJ0E1
+rEAwBGRxnEKVVKETOqx8PkTqXN62F+ZBrCwOQ5dFigjVuaqNPBYodj4fEAlW6LIo
+cmkCb7cjgN1hc9lEm0UFuFx2p1H1u0rtqqEYCubHKLOgWCU0TOQogg6nYrNiRgIp
+RZeisgkakBxD0Tgbh8ESu+KAZkVVGNB0cbTUOrAIIUmRo3GcZmWZYkUCsDIAJACA
+p3DIGChAESIwsAKaByMaOI6SSEHigQHQhCjgaOQ4pjZXYLUhNs6hoHwOgjqVHCvv
+KnSg3vt6s/w12mBNwNN+6jPTBAeFPXl8d8fWrZT7BrZHxCSHTh1KjXhP1/LN9xk2
+s687c2PykaQsGOg44dwVNzLY3HVDcyqrcnbX7tmjQrrlVPh4aGLf6KK7Ldfbmd2M
+L90509R+7nVTeGvzv5Fhnt6u8fn4uu6vDm77LfGDvWlrf7p6gXvrSur1jl/TMy6W
+64szeyI3D786+TY0LxRvPd/489m62JF6Uz/54ExRZVjr2AsH/9YltRh1O8tbDiSN
+dEJ3vymjYvTCH13Ff33iN5jqup8bFfFhxqPbIce82XdqS555lPI+fe7BmsNf3Ft/
+9Nae16KutST7zx5rWNpwfpOwbNkyr20kqryJs6fnvHrKl/JPTVo2l1Q9RxEx0Q/1
+RVeUav3N6an8gbM76n2XtzVd9n178mTpms91o8u/aHuM/u3FE9deydSD/Mmgyti+
+nZVefeyl+Y01VZnO+Y/vRec5FfcOa8XMm1hg9NDXJu3UUEN4hPvhp56KixMbPoq2
+P2/QjmYMT6Z2uJ+7TfygWS67sXK1cBTGvxy1v3rIdDxxoXt5rufIobrY63/uB/V9
+A4uXTpu3HG87sFA7d3ftzcJNOZ8FL73UVjj1TmSnR0ltbNDVjo5tDvDmkrc6fdNl
+IR2OwO1jaSMz6aZFU1p3Qc1KSMOPe+wB92NKvzNOxAWFvPhuYEGX/fBccnx1/+z6
+pl6LbvD3FPvWdXJ/V3v3s2UlvVWtYf8BzQDL8g==
+=Kop7
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/haozeke
+
+==================================================================
